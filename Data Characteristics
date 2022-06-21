@@ -1,0 +1,57 @@
+Before I preform any type of analysis or visualizations I try to get an understanding of the data, its characteristics, flaws or errors. This is an important step as it provides information that helps me determine my next steps in cleaning, analysis and visualization.
+
+Columns
+
+    age: age of primary beneficiary
+    sex: insurance contractor gender, female, male
+    bmi: Body mass index, providing an understanding of body, weights that are relatively high or low relative to height,objective index of body weight (kg / m ^ 2) using the ratio of height to weight, ideally 18.5 to 24.9
+    children: Number of children covered by health insurance / Number of dependents
+    smoker: Smoking
+    region: the beneficiary's residential area in the US, northeast, southeast, southwest, northwest.
+    charges: Individual medical costs billed by health insurance
+
+Categorical Features Sex, Smoker, Region
+Continuous Features Age, Children, BMI, Charges
+
+'''
+#observe complete data information
+df.info()
+'''
+
+'''
+#display first 5 observations
+df.head()
+'''
+
+'''
+#display last 5 observations
+df.tail()
+'''
+
+'''
+#display the number of variables and observations
+df.shape
+#there are a total of 7 features with 1338 rows
+'''
+
+'''
+#display variable names and data types
+df.dtypes
+'''
+
+'''
+#amount of values 
+#this does not display/include missing data
+df.count()
+'''
+
+'''
+#Display characteristics of the data, numerical only
+df.describe()
+'''
+
+'''
+#display any missing data there doesn't seem to be any
+df.isna()
+'''
+
