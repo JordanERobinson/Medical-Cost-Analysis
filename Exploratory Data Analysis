@@ -1,0 +1,97 @@
+The primary objective of exploratory data analysis is to uncover the underlying sructures. It helps to identify obvious errors, 
+outliers as well as provides a better understanding of patterns and relationships between variables.
+In this project it is important to understand how variables may be related to billed medical expenses. 
+For example,one could expect that smokers and older people are at higher risk of large medical expenses. 
+In this section, I will explore possible relationships between various features and cost through data visualization.
+
+'''
+
+# Charges vs count
+plt.figure(figsize=(10,6))
+plt.title('Total Cost Distribution')
+plt.ylabel('Density')
+plt.xlabel('Charges($)')
+sns.histplot(df.charges, fill=False, kde=True)
+
+'''
+
+Insight
+The mean value is greater than the median which implies that the distibution of insurance charges is skewed to the right which I can confirm using a histogram.
+However, a large majority of individuals have a total yearly medical expenses between zero and $15,00.
+
+'''
+
+# Count vs Charges of Smokers and non-Smokers
+plt.figure(figsize=(10, 6))
+plt.title('Cost Distribution Smokers and Non-Smokers')
+plt.xlabel('Density')
+plt.ylabel('Charges($)')
+sns.histplot(x=df.charges, hue=df.smoker, element='step')
+
+'''
+
+Insights
+It appears that there are more non-smokers than smokers and when compared to each other smokers have higher medical expenses.
+The large majority of non-smokers recieve less than 15k while majority of smokers recieve bills greater than 15K
+
+'''
+plt.figure(figsize=(14, 8))
+sns.relplot(x='charges', y='age', col='smoker', data=df)
+
+'''
+
+Insights
+It appears that there are more non-smokers than smokers and when compared to each other smokers have higher medical expenses.
+The large majority of non-smokers recieve less than 15k while majority of smokers recieve bills greater than 15K
+
+'''
+
+# AGE
+plt.figure(figsize=(10 ,6))
+sns.histplot(x=df.age, hue=df.smoker)
+
+'''
+Insights
+This is a closer look at the age of participants and their smoking habits.
+It appears that the largest portion of this data was collected from indiviuals in their early 20's.
+The age range of participants are 18 years old to 64 years old.
+
+'''
+
+plt.figure(figsize=(14, 8))
+sns.relplot(x='age', y='charges', col='sex', hue='smoker', data=df)
+
+'''
+Insights
+When comparing medical expenses gender does seem to be a determinante of price in this study.
+
+'''
+plt.figure(figsize=(6, 6))
+ax = sns.countplot(x=df.sex, hue=df.smoker)
+
+for i in ax.containers:
+    ax.bar_label(i, label_type='edge', padding=1)
+ax.margins(y=0.1)
+'''
+
+Insights
+Gender does not seem to correlate with higher rates of smoking in this study.
+
+'''
+plt.figure(figsize=(20, 10))
+sns.pairplot(df, hue='smoker')
+'''
+
+'''
+plt.figure(figsize=(10, 6))
+sns.distplot(df.bmi)
+'''
+Insights
+There is a normal distibultion curve for BMI in participates in this study.
+
+'''
+plt.figure(figsize=(10, 6))
+sns.lmplot(x="bmi", y="charges", hue='smoker', data=df, size=8)
+'''
+Insights
+BMI seems to have a larger impact on medical expences in those who smoke vs those who do not.
