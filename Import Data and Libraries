@@ -1,0 +1,21 @@
+#import libraries and tools
+import pandas as pd #analyze data tabular data
+import numpy as np #analyze data numerical data
+import scipy.stats as stats #scientific computation
+import matplotlib.pyplot as plt #data visualization
+%matplotlib inline
+
+#predictive data analysis tools
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor
+
+#move data visualization settings
+import seaborn as sns #data visualization
+
+import warnings
+warnings.filterwarnings("ignore")
+
+#import data
+df = pd.read_csv('../input/insurance/insurance.csv')
